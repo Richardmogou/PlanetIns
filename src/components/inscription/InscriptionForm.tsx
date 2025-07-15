@@ -14,6 +14,7 @@ import { DocumentsStep } from "./steps/documents-step"
 import { AcademicStep } from "./steps/academic-step"
 import { ContactStep } from "./steps/contact-step"
 import { ValidationStep } from "./steps/validation-step"
+import { Link } from "react-router-dom"
 
 const steps = [
   { id: 1, title: "Informations Personnelles", component: PersonalInfoStep },
@@ -61,7 +62,7 @@ export function InscriptionForm() {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
-          <Link href="/" className="flex items-center text-blue-600 hover:text-blue-700">
+          <Link to="/" className="flex items-center text-blue-600 hover:text-blue-700">
             <ArrowLeft className="h-4 w-4 mr-2" />
             Retour à l'accueil
           </Link>
