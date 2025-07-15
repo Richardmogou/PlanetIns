@@ -77,7 +77,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     localStorage.removeItem("auth-token")
   }
 
-  return <AuthContext.Provider value={{ user, login, logout, isLoading }}>{children}</AuthContext.Provider>
+  return(
+     <AuthContext.Provider value={{ user, login, logout, isLoading }}>
+    {children}
+    </AuthContext.Provider>)
 }
 
 export function useAuth() {
