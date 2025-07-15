@@ -14,8 +14,8 @@ import { format } from "date-fns"
 import { fr } from "date-fns/locale"
 
 interface AcademicStepProps {
-  data: any
-  onUpdate: (data: any) => void
+  data: Partial<FormData>
+  onUpdate: (data: FormData) => void
   onNext: () => void
   onPrevious: () => void
 }
@@ -25,9 +25,14 @@ interface Formation {
   etablissement: string
   specialisation: string
   niveau: string
-  dateDebut: Date | null
-  dateFin: Date | null
+  dateDebut: Date | undefined
+  dateFin: Date | undefined
   diplomeObtenu: boolean
+}
+
+interface FormData {
+  dernierEtablissement: string
+  formations: Formation[]
 }
 
 const etablissements = [
@@ -66,9 +71,9 @@ const niveaux = [
 ]
 
 export function AcademicStep({ data, onUpdate, onNext, onPrevious }: AcademicStepProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     dernierEtablissement: "",
-    formations: [] as Formation[],
+    formations: [],
     ...data,
   })
 
@@ -139,8 +144,8 @@ export function AcademicStep({ data, onUpdate, onNext, onPrevious }: AcademicSte
       etablissement: "",
       specialisation: "",
       niveau: "",
-      dateDebut: null,
-      dateFin: null,
+      dateDebut: undefined,
+      dateFin: undefined,
       diplomeObtenu: false,
     }
 
@@ -183,7 +188,7 @@ export function AcademicStep({ data, onUpdate, onNext, onPrevious }: AcademicSte
     return false
   }
 
-  const updateFormData = useCallback((updates: any) => {
+  const updateFormData = useCallback((updates: Partial<FormData>) => {
     setFormData((prev) => ({ ...prev, ...updates }))
   }, [])
 

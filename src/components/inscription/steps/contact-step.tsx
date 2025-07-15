@@ -9,15 +9,33 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Badge } from "@/components/ui/badge"
 import { Mail, Phone, MapPin, User, CheckCircle, AlertCircle } from "lucide-react"
 
+interface PersonneUrgence {
+  nom: string
+  prenom: string
+  telephone: string
+  relation: string
+}
+
+interface FormData {
+  email: string
+  emailConfirmation: string
+  telephone: string
+  adresse: string
+  ville: string
+  codePostal: string
+  pays: string
+  personneUrgence: PersonneUrgence
+}
+
 interface ContactStepProps {
-  data: any
-  onUpdate: (data: any) => void
+  data: Partial<FormData>
+  onUpdate: (data: FormData) => void
   onNext: () => void
   onPrevious: () => void
 }
 
 export function ContactStep({ data, onUpdate, onNext, onPrevious }: ContactStepProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     email: "",
     emailConfirmation: "",
     telephone: "",
@@ -182,7 +200,7 @@ export function ContactStep({ data, onUpdate, onNext, onPrevious }: ContactStepP
     setAddressSuggestions([])
   }, [])
 
-  const updateFormData = useCallback((updates: any) => {
+  const updateFormData = useCallback((updates: Partial<FormData>) => {
     setFormData((prev) => ({ ...prev, ...updates }))
   }, [])
 

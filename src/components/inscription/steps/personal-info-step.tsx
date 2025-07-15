@@ -38,12 +38,21 @@ const typesIdentite = [
   { value: "acte_naissance", label: "Acte de Naissance" },
 ]
 
+interface FormData {
+  nom: string
+  prenoms: string[]
+  sexe: string
+  dateNaissance: Date | undefined
+  nationalite: string
+  typeIdentite: string
+}
+
 export function PersonalInfoStep({ data, onUpdate, onNext, onPrevious }: PersonalInfoStepProps) {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     nom: "",
     prenoms: [""],
     sexe: "",
-    dateNaissance: null as Date | null,
+    dateNaissance: undefined,
     nationalite: "",
     typeIdentite: "",
     ...data,
@@ -111,8 +120,8 @@ export function PersonalInfoStep({ data, onUpdate, onNext, onPrevious }: Persona
     }
   }
 
-  const updateFormData = useCallback((updates: any) => {
-    setFormData((prev) => ({ ...prev, ...updates }))
+  const updateFormData = useCallback((updates: Partial<FormData>) => {
+    setFormData((prev: FormData) => ({ ...prev, ...updates }))
   }, [])
 
   const addPrenom = useCallback(() => {
@@ -179,10 +188,7 @@ export function PersonalInfoStep({ data, onUpdate, onNext, onPrevious }: Persona
               <RadioGroupItem value="F" id="feminin" />
               <Label htmlFor="feminin">Féminin</Label>
             </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="NB" id="non-binaire" />
-              <Label htmlFor="non-binaire">Non-binaire</Label>
-            </div>
+            
           </RadioGroup>
           {errors.sexe && <p className="text-sm text-red-500">{errors.sexe}</p>}
         </div>

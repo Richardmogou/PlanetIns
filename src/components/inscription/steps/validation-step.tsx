@@ -133,7 +133,7 @@ export function ValidationStep({ data, onUpdate, onNext, onPrevious }: Validatio
       </head>
       <body>
         <div class="header">
-          <div class="logo">🎓 UniPortal</div>
+          <div class="logo">🎓 InscripRichy</div>
           <div class="title">RÉCÉPISSÉ D'INSCRIPTION</div>
           <div>Année universitaire 2024-2025</div>
         </div>
@@ -258,7 +258,7 @@ export function ValidationStep({ data, onUpdate, onNext, onPrevious }: Validatio
         <div class="footer">
           <p>Ce document a été généré automatiquement le ${new Date().toLocaleString("fr-FR")}</p>
           <p>Conservez précieusement ce récépissé jusqu'à la validation définitive de votre inscription.</p>
-          <p>© 2024 UniPortal - Plateforme d'inscription universitaire</p>
+          <p>© 2024 InscripRichy - Plateforme d'inscription universitaire</p>
         </div>
       </body>
       </html>

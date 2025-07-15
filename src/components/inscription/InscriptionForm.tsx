@@ -68,7 +68,7 @@ export function InscriptionForm() {
           </Link>
           <div className="flex items-center space-x-2">
             <GraduationCap className="h-6 w-6 text-blue-600" />
-            <span className="font-semibold text-gray-900">UniPortal</span>
+            <span className="font-semibold text-gray-900">InscripRichy</span>
           </div>
         </div>
 
