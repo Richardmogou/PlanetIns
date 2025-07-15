@@ -1,12 +1,13 @@
 // App.tsx
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import RootLayout from './pages/Layout'; // Chemin vers votre composant de mise en page
+import RootLayout from './pages/Layout'; 
 import { LoginForm } from './components/auth/LoginForm';
 import { InscriptionForm } from './components/inscription/InscriptionForm';
 import { LandingPage } from './components/landing/Landingpage';
 import { StudentDashboard } from './components/dashboard/StudentDashboard';
-import { LayoutDashboard } from 'lucide-react';
+import { AdminDashboard } from './components/dashboard/AdminDashboard';
+import DashboardPage from './pages/dashboard/DashboardPage';
 
 function App() {
   return (
@@ -16,7 +17,11 @@ function App() {
             <Route path="/" element={<LandingPage />} />
           <Route path="/auth/login" element={<LoginForm />} />
           <Route path="/inscription" element={<InscriptionForm />} />
-          <Route path="/dashboard" element={<LayoutDashboard />} />
+          <Route path="/dashboard" element={
+            <DashboardPage>
+              <AdminDashboard />
+              <StudentDashboard />
+            </DashboardPage>} />
         </Routes>
       </RootLayout>
     </BrowserRouter>

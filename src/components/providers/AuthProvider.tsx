@@ -2,6 +2,7 @@
 import type React from "react"
 
 import { createContext, useContext, useState, useEffect } from "react"
+import { Navigate, useNavigate } from "react-router-dom"
 
 interface User {
   id: string
@@ -22,6 +23,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const navigate=useNavigate()
 
   useEffect(() => {
     // Simuler la vérification du token au chargement
@@ -75,6 +77,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = () => {
     setUser(null)
     localStorage.removeItem("auth-token")
+    navigate("/");
   }
 
   return(

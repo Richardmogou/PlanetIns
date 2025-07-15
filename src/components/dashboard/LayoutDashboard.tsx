@@ -13,7 +13,7 @@ export function DashboardLayout() {
 
   useEffect(() => {
     if (!isLoading && !user) {
-      router("/auth")
+      router("/auth/login")
     }
   }, [user, isLoading, router])
 
